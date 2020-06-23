@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block main %}
+    {%if registered %}
+    <h5 class="success">{{ registered }}</h5>
+    {% endif %}
+    {%if success %}
+    <h5 class="success">{{ success }}</h5>
+    {% endif %}
+    {%if deleted %}
+    <h5 class="error">{{ deleted }}</h5>
+    {% endif %}
+
+    <div class="floatLeft">
+        <h2>¡Bienvenido a Remesa familiar!</h2>
+        <p> Como miembro de nuestro portal podrás realizar las siguientes operaciones:</p>
+        <ul>
+            <li class="mainList">Enviar de remesas en euros desde Europa a Venezuela.</li>
+            <li class="mainList">Consultar la tasa del día.</li>
+            <li class="mainList">Calcular los bolívares que recibirán tus familiares o amigos.</li>
+            <li class="mainList">Asociar varias cuentas bancarias y teléfonos a tu cuenta.</li>
+            <li class="mainList">Consultar el historial de tus remesas.</li>
+        </ul>
+    </div>
+    <div class="floatRight" style="margin-right: 1em;">
+        <h5 class="textCenter">Inicia sesión:</h5>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <input autocomplete="off" class="form-control centered" name="id" placeholder="Cédula de identidad" type="number"
+                required oninvalid="this.setCustomValidity('Campo obligtorio')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control centered" name="password" placeholder="Contraseña" type="password"
+                required oninvalid="this.setCustomValidity('Campo obligtorio')" oninput="setCustomValidity('')">
+            </div>
+            <button class="btn btn-primary mainbuttons centered" id="login" type="submit">Iniciar sesión</button>
+        </form>
+        <br>
+        {% if invalid %}
+            <p class="error">{{ invalid }}</p>
+        {% endif %}
+        <h5 class="textCenter">¿Olvidaste tu contraseña?</h5>
+            <form action="/recover">
+                <button class="btn btn-primary mainbuttons centered" type="submit">Recupérala aquí</button>
+            </form>
+            <br>
+    {% if not registered %}
+        <h5 class="textCenter">¿No tienes cuenta?</h5>
+        <form action="/register" method="get">
+            <button class="btn btn-primary mainbuttons centered" type="submit">¡Regístrate!</button>
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Preguntas de seguridad
+{% endblock %}
+
+{% block main %}
+{% if invalidId %}
+<p class="error">{{ invalidId }}</p>
+{% endif %}
+{% if invalidVehicle %}
+<p class="error">{{ invalidVehicle }}</p>
+{% endif %}
+{% if invalidPet %}
+<p class="error">{{ invalidPet }}</p>
+{% endif %}
+<h5 class="info">Responde a las preguntas de seguridad para poder generar una nueva contraseña</h5>
+<form action="/recover" method="post" class="registForm centered">
+    <div class="form-group registForm">
+        <input class="form-control fullWidth" type="text" value="Tu cédula de identidad:" disabled>
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control fullWidth" name="id" placeholder="Escribe aquí tu respuesta" type="text"
+        required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+    </div>
+
+    <div class="form-group registForm">
+        <input class="form-control fullWidth" type="text" value="Modelo de tu primer vehículo:" disabled>
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control fullWidth" name="vehicle" placeholder="Escribe aquí tu respuesta" type="text"
+        required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+    </div>
+    <div class="form-group">
+        <input class="form-control fullWidth" type="text" value="Nombre de tu primera mascota:" disabled>
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control fullWidth" name="pet" placeholder="Escribe aquí tu respuesta" type="text"
+        required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+    </div>
+    <button class="btn btn-primary centered" type="submit">Aceptar</button>
+</form>
+{% endblock %}
+

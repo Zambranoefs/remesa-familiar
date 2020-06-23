@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Mis cuentas bancarias
+{% endblock %}
+
+{% block main %}
+<p class="info">Gestiona tus cuentas bancarias y sus teléfonos asociados</p><br>
+
+<!-- Tables in html: https://www.w3schools.com/tags/tag_thead.asp-->
+<div class="floatLeft">
+    <table class="textCenter" id="bankAccounts">
+        <thead class="tableHeader">
+            <td>Banco</td>
+            <td>Cuenta</td>
+            <td>Teléfono</td>
+        </head>
+        <tbody class="whiteBg">
+            <!-- Iterate through a dictionary in Jinja: https://stackoverflow.com/questions/25373154/how-to-iterate-through-a-list-of-dictionaries-in-jinja-template-->
+        {% for account in accounts %}
+            <tr>
+            {% for key, value in account.items() %}
+                <td class="morePadding">{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+<div class="floatLeft" style="margin-left: 3em; margin-top: 1em;">
+    <form action="/accounts" method="post" >
+        <div class="form-group newAccount">
+            <select autocomplete="off" class="form-control fullWidth" name="newBank" placeholder="Banco" required
+            oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+            	<option value="" disabled selected>Banco</option>
+            	<option value="100% Banco">100% Banco</option>
+            	<option value="Activo">Activo</option>
+            	<option value="B.O.D.">B.O.D.</option>
+            	<option value="Bancamiga">Bancamiga</option>
+            	<option value="Bancaribe">Bancaribe</option>
+            	<option value="Bancrecer">Bancrecer</option>
+            	<option value="Banesco">Banesco</option>
+            	<option value="Banfanb">Banfanb</option>
+            	<option value="Bangente">Bangente</option>
+            	<option value="Banplus">Banplus</option>
+            	<option value="Bicentenario">Bicentenario</option>
+            	<option value="Caroní">Caroni</option>
+            	<option value="Citibank">Citibank</option>
+            	<option value="Del Sur">Del Sur</option>
+            	<option value="Del Tesoro">Del Tesoro</option>
+            	<option value="Exterior">Exterior</option>
+            	<option value="Fondo Comun">Fondo Común</option>
+            	<option value="Mercantil">Mercantil</option>
+            	<option value="Mi Banco">Mi Banco</option>
+            	<option value="Nacional de Crédito">Nacional de Crédito</option>
+            	<option value="Plaza">Plaza</option>
+            	<option value="Provincial">Provincial</option>
+            	<option value="Sofitasa">Sofitasa</option>
+            	<option value="Venezuela">Venezuela</option>
+            	<option value="Vzlano. de crédito">Venezolano de Crédito</option>
+            </select>
+        </div>
+        <div class="form-group newAccount">
+            <input autocomplete="off" class="form-control fullWidth" name="newAccount" placeholder="Nº de cuenta" type="text" required pattern="[0-9]{20}" maxlength="20"
+            oninvalid="this.setCustomValidity('Indique los 20 dígitos de su cuenta, sin espacios ni símbolos')" oninput="setCustomValidity('')">
+        </div>
+        <div class="form-group newAccount">
+            <input autocomplete="off" class="form-control fullWidth" name="newPhone" placeholder="Teléfono celular" type="tel" maxlength="15"
+            required oninvalid="this.setCustomValidity('Indique su Nº de teléfono celular')" oninput="setCustomValidity('')">
+        </div>
+        <button class="btn btn-primary" type="submit">Registrar cuenta</button>
+    </form>
+</div>
+<div class="floatLeft" style="margin-left: 3em; margin-top: 1em;">
+    <!-- Confirm submission: https://stackoverflow.com/questions/6515502/javascript-form-submit-confirm-or-cancel-submission-dialog-box -->
+    <form action="/delete_accounts" method="post" onsubmit="return confirm('¿Estás seguro de querer eliminar esta cuenta?');">
+        <div class="form-group newAccount">
+            <select autocomplete="off" class="fullWidth textRight form-control" name="deleteAccount" required style="height: 2em;"
+            oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+                <option value="" disabled selected>Cuenta</option>
+            {% for account in accounts %}
+                <option value="{{ account['cuenta'] }}">{{ account["banco"] }}: {{ account["cuenta"] }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Eliminar cuenta</button>
+        <p id="bnkDelete"></p>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,325 @@
+#logoname
+{
+    font-family: 'Pacifico', cursive;
+    padding-left: 3em;
+}
+
+#slogan
+{
+    font-family: 'Merienda', cursive;
+    font-size: 60%;
+    padding-left: 5em;
+}
+
+
+#remittance
+{
+    width: 23em;
+    background-color: #001a66;
+    color: white;
+    padding: 2em;
+    border-radius: 25px;
+}
+
+
+#confirmation
+{
+    width: 19em;
+    background-color: #001a66;
+    color: white;
+    padding: 2em;
+    border-radius: 25px;
+    position: relative;
+}
+
+#bankAccounts
+{
+    width: 30em;
+}
+
+#rate[type="text"]:disabled
+{
+
+    background-color:#fff3cd;
+    border: none;
+    color: #856404;
+}
+
+#bs
+{
+    background-color:#001a66;
+    color: white;
+    border: none;
+}
+
+/* Modified version of boostrap's danger alert :https://getbootstrap.com/docs/4.0/components/alerts/*/
+.error
+{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: .25rem 1.45rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: large;
+    text-align: center;
+}
+
+/* Modified version of boostrap's warning alert :https://getbootstrap.com/docs/4.0/components/alerts/*/
+.warning
+{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    position: relative;
+    padding: .25rem 1.45rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: large;
+    text-align: center;
+}
+
+/* Modified version of boostrap's primary alert :https://getbootstrap.com/docs/4.0/components/alerts/*/
+.info
+{
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    position: relative;
+    padding: .25rem 1.45rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: large;
+    text-align: center;
+}
+
+.success
+{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    padding: .25rem 1.45rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-size: large;
+    text-align: center;
+}
+
+.registForm
+{
+    width: 17em;
+}
+
+.leftPadding
+{
+    padding-left: 1em;
+}
+
+/* Customize disabled input field colors: https://stackoverflow.com/a/13780343/13485188*/
+input[type="text"]:disabled
+{
+    background-color:#001a66;
+    color: white;
+    border: none;
+}
+
+.customPadding
+{
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    padding-right: 3rem;
+}
+
+.newAccount
+{
+    width: 15em;
+}
+
+.morePadding
+{
+    padding: 0.3em;
+}
+
+.tableHeader
+{
+    background-color: gold;
+    font-size: large;
+    font-weight: bold;
+}
+
+.whiteBg
+{
+    background-color: white;
+}
+
+
+.blueBg
+{
+    background-color: #0000ff;
+    color: white;
+}
+
+table, td
+{
+    border: 1px solid black;
+}
+
+.noBorders
+{
+    border: none;
+}
+
+.centered
+{
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.marginLeft
+{
+    margin-left: 1em;
+}
+
+.noMargin
+{
+    margin: 0;
+}
+
+.textCenter
+{
+    text-align: center;
+}
+
+#deletionButton
+{
+    cursor: pointer;
+
+}
+
+.cancelOrder
+{
+    height: 2.5em;
+    margin-bottom: 1em
+}
+
+.textRight
+{
+    text-align: right;
+}
+
+.fullWidth
+{
+    width: 100% !important;
+}
+
+.nav-link
+{
+    color:#000000 !important;
+
+}
+
+.nav-link:hover
+{
+    color:#0066cc !important;
+
+}
+
+
+.mainbuttons
+{
+    width: 9em;
+}
+
+/* credits: https://stackoverflow.com/a/40021713/13485188*/
+.mainList
+{
+	padding: 15px 0 15px 50px;
+	list-style: none;
+	background-image: url("/static/icon.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 40px;
+}
+
+.itimFont
+{
+
+    font-family: 'Itim', cursive;
+}
+
+.floatLeft
+{
+    float: left;
+}
+
+.floatRight
+{
+    float: right;
+}
+
+.alignLeft
+{
+    text-align: left;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+    /* img source: https://www.pexels.com/photo/above-atmosphere-clouds-flight-37728 */
+    background-image: url("/static/main_background.jpeg");
+    background-size: cover;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.absolute
+{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1em;
+}

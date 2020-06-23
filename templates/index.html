@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block main %}
+
+<div class="centered" id="remittance">
+    <h5 class="warning">Tasa del día: <input type="text" size="7" id="rate" value="{{ rate }}" disabled></input>Bs/€</h5>
+    <p>¿Cuántos euros cambiar a bolívares?</p><br>
+    <form action="/" method="post">
+        <table class="noBorders">
+            <tr>
+                <td class="noBorders">Euros:</td>
+                <td class="noBorders">
+                    <input autocomplete="off" size="15" type="text" name="euros" id="euros" value="1" class="textRight marginLeft" onkeyup="calculate(); return false;">
+                </td>
+            </tr>
+            <tr>
+                <td class="noBorders">Bolívares:</td>
+                <td class="noBorders">
+                    <!-- Input disabled: https://www.w3schools.com/tags/att_input_disabled.asp-->
+                    <input autocomplete="off" size="15" type="text" class="textRight marginLeft" value="{{ rate }}" name="bs" id="bs">
+                </td>
+            </tr>
+            <tr>
+                <td colspan"3" class="noBorders" style="height: 1em;"></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="noBorders">
+                    <select autocomplete="off" class="fullWidth" required style="height: 2em;" name="account"
+                    oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+                        <option value="" disabled selected>Cuenta</option>
+                    {% for account in accounts %}
+                        <option value="{{ account['cuenta'] }}">{{ account["banco"] }}: {{ account["cuenta"] }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table><br>
+        <button class="btn btn-primary centered" type="submit">Iniciar pedido</button>
+    </form>
+</div>
+{% endblock %}
+

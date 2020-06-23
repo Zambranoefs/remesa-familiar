@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Historial de pedidos
+{% endblock %}
+
+{% block main %}
+{% if registered %}
+<p class="success">{{ registered }}</p>
+{% endif %}
+<p class="info">Consulta los pedidos que has realizado</p>
+
+    <table class="table table-striped floatLeft" style="width: 60em">
+        <thead class="tableHeader">
+            <tr class="text-center">
+                <td>Número</td>
+                <td>Fecha</td>
+                <td>Bolívares</td>
+                <td>Banco</td>
+                <td>Cuenta</td>
+                <td>Euros</td>
+            </tr>
+        </thead>
+        <tbody class="whiteBg textCenter">
+            {% if not history %}
+            <tr>
+                <td colspan=6 class="warning" style="font-size: large">Aún no has realizado ningún pedido</td>
+            </tr>
+            {% else %}
+                {% for order in history %}
+                <tr>
+                    <td>{{ order["nro"] }} </td>
+                    <td>{{ order["fecha"] }} </td>
+                    <td>{{ order["bs"] }} </td>
+                    <td>{{ order["banco"] }} </td>
+                    <td>{{ order["cuenta"] }} </td>
+                    <td>{{ order["euros"] }} </td>
+                </tr>
+                {% endfor %}
+           {% endif %}
+        </tbody>
+    </table>
+    <div class="floatRight">
+        <h5 class="warning" style="margin-bottom: 1em">Cancelar pedido</h5>
+        <form action="/history" method="post" onsubmit="return confirm('¿Estás seguro de querer cancelar este pedido?');">
+            <select autocomplete="off" class="form-control centered cancelOrder" required name="order"
+            oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+                <option value="" disabled selected>Nº de pedido</option>
+            {% for order in history %}
+                <option value="{{ order['nro'] }}">{{ order["nro"] }}</option>
+            {% endfor %}
+            </select>
+            <button class="btn btn-primary centered" type="submit">Aceptar</button>
+        </form>
+    </div>
+
+
+{% endblock %}

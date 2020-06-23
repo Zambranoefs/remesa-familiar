@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/icon.png" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Merienda&family=Pacifico&family=Itim&display=swap" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+        <title>Remesa familiar: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body class="itimFont" onload="sortTable()">
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><img src="/static/icon.png" class="floatLeft"><div id="logoname">Remesa familiar</div><div id="slogan">Cruzando fronteras</div></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/">Iniciar pedido</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">Mi historial de pedidos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/accounts">Mis cuentas bancarias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">Mi perfil</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Cerrar sesión</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <!-- Link to jump to a specific part of a page: https://blog.hubspot.com/marketing/jump-link-same-page-->
+                        <li class="nav-item"><a class="nav-link" href="/login#login">Ingresar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register">Registrarse</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container-fluid customPadding">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="small text-center text-muted">
+            Creado por <a href="https://github.com/Zambranoefs" target="_blank">Fernando Zambrano.</a> Un venezolano viviendo en Lisboa, Portugal.
+        </footer>
+    </body>
+    <script type="text/javascript" src="/static/functions.js"></script>
+</html>

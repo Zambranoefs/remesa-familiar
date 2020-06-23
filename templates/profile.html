@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block main %}
+{% if success %}
+<h5 class="success">{{ success }}</h5>
+{% endif %}
+<h5 class="info">Administra tu cuenta</h5>
+<br>
+<form action="/profile" method="post" class="registForm centered">
+    <p class="warning" style="font-size: large;">Actualiza tu contraseña</p>
+    <div class="form-group registForm">
+        <input autocomplete="off" class="form-control fullWidth" type="password" name="password" placeholder="Contraseña actual"
+         required oninvalid="this.setCustomValidity('Campo obligatorio ')" oninput="setCustomValidity('')">
+    </div>
+    <div class="form-group registForm">
+        <input autocomplete="off" class="form-control fullWidth" type="password" name="newPass" placeholder="Contraseña de al menos 6 dígitos" minlength="6"
+         required oninvalid="this.setCustomValidity('Indica una contraseña de al menos 6 dígitos')" oninput="setCustomValidity('')">
+    </div>
+    <div class="form-group registForm">
+        <input autocomplete="off" class="form-control fullWidth" type="password" name="confirmation" placeholder="Confirma la nueva contraseña"
+        required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+    </div>
+    <button class="btn btn-primary centered" type="submit">Aceptar</button>
+</form><br><br>
+<form action="/delete_customer" method="post" onsubmit="return confirm('¿Estás seguro de querer eliminar tu cuenta?');">
+    <button class="btn btn-primary centered" style="background-color: red; border-color: red;" type="submit">Eliminar mi cuenta</button>
+</form>
+{% endblock %}
+

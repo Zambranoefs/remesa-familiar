@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Confirmación
+{% endblock %}
+
+{% block main %}
+<div class="centered" id="confirmation">
+    <form action="/confirmation" method="post" class="textCenter">
+        <h5 class="alert alert-warning textCenter" role="alert">REMESA DE {{ euros }} €</h5>
+        <p>Bs. {{ bs }}</p>
+        <p>{{ bank }}</p>
+        <p>{{ account }}</p>
+        <p>{{ name }}</p>
+        <p>C.I: {{ customer_id }}</p>
+        <p>Tlf: {{ phone }}</p><br>
+        <button class="btn btn-primary absolute" type="submit">Confirmar</button>
+    </form>
+    <a href="/"><button class="btn btn-primary absolute" type="submit">Cancelar</button></a>
+    </form>
+</div>
+{% endblock %}
+

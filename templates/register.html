@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Registro
+{% endblock %}
+
+{% block main %}
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+    <h5 class="info">Rellena los campos para registrar tu cuenta</h5>
+
+    <form action="/register" method="post" style="width: 35em;" class=centered>
+        <div class="floatLeft registForm leftPadding">
+            <!-- Custom validation message source: https://stackoverflow.com/a/24392931/13485188-->
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control fullWidth" name="name" placeholder="Nombre y apellido" type="text"
+                required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control fullWidth" name="id" placeholder="Cédula de identidad" type="number"
+                required oninvalid="this.setCustomValidity('Ingrese su cédula sin letras ni símbolos')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control fullWidth" name="phone" placeholder="Nº de teléfono con código de país" type="tel" maxlength="15"
+                required oninvalid="this.setCustomValidity('Indique su Nº de teléfono celular')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <!-- Custom placeholder for select: https://stackoverflow.com/a/5859221/13485188-->
+                <select autocomplete="off" class="form-control fullWidth" name="bank" placeholder="Banco" required
+                oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+                	<option value="" disabled selected>Banco</option>
+                	<option value="100% Banco">100% Banco</option>
+                	<option value="Activo">Activo</option>
+                	<option value="B.O.D.">B.O.D.</option>
+                	<option value="Bancamiga">Bancamiga</option>
+                	<option value="Bancaribe">Bancaribe</option>
+                	<option value="Bancrecer">Bancrecer</option>
+                	<option value="Banesco">Banesco</option>
+                	<option value="Banfanb">Banfanb</option>
+                	<option value="Bangente">Bangente</option>
+                	<option value="Banplus">Banplus</option>
+                	<option value="Bicentenario">Bicentenario</option>
+                	<option value="Caroní">Caroni</option>
+                	<option value="Citibank">Citibank</option>
+                	<option value="Del Sur">Del Sur</option>
+                	<option value="Del Tesoro">Del Tesoro</option>
+                	<option value="Exterior">Exterior</option>
+                	<option value="Fondo Comun">Fondo Común</option>
+                	<option value="Mercantil">Mercantil</option>
+                	<option value="Mi Banco">Mi Banco</option>
+                	<option value="Nacional de Crédito">Nacional de Crédito</option>
+                	<option value="Plaza">Plaza</option>
+                	<option value="Provincial">Provincial</option>
+                	<option value="Sofitasa">Sofitasa</option>
+                	<option value="Venezuela">Venezuela</option>
+                	<option value="Vzlano. de crédito">Venezolano de Crédito</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <!-- Exact length: https://stackoverflow.com/a/35344145/13485188-->
+                <input autocomplete="off" class="form-control fullWidth" name="account" placeholder="Nº de cuenta" type="text" required pattern="[0-9]{20}" maxlength="20"
+                 oninvalid="this.setCustomValidity('Indica los 20 dígitos de tu cuenta, sin espacios ni símbolos')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <!-- minlength: https://stackoverflow.com/a/57509569/13485188-->
+                <input autocomplete="off" class="form-control fullWidth" name="password" placeholder="Contraseña de al menos 6 dígitos" type="password" minlength="6"
+                required oninvalid="this.setCustomValidity('Indica una contraseña de al menos 6 dígitos')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control fullWidth" name="confirmation" placeholder="Confirma tu contraseña" type="password"
+                required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+            </div>
+        </div>
+        <div class="floatLeft registForm leftPadding" style="margin-top: 1em;">
+
+            <h5 class="warning">Preguntas de seguridad:</h5>
+
+            <div class="form-group">
+                <input class="form-control fullWidth" type="text" value="Modelo de tu primer vehículo:" disabled>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control fullWidth" name="vehicle" placeholder="Escribe aquí tu respuesta" type="text"
+                required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+            </div>
+            <div class="form-group">
+                <input class="form-control fullWidth" type="text" value="Nombre de tu primera mascota:" disabled>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control fullWidth" name="pet" placeholder="Escribe aquí tu respuesta" type="text"
+                required oninvalid="this.setCustomValidity('Campo obligatorio')" oninput="setCustomValidity('')">
+            </div>
+            <br>
+            <button class="btn btn-primary centered" type="submit">Finalizar registro</button>
+        </div>
+    </form>
+{% endblock %}
